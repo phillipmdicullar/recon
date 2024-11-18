@@ -1,0 +1,30 @@
+subfinder -d testphp.vulnweb.com | gau | urldedupe | gf xss
+
+
+sudo apt-install subfinder
+
+go install github.com/lc/gau/v2/cmd/gau@latest
+
+sudo rm -rf /usr/local/bin/gau
+sudo cp ~/go/bin/gau /usr/local/bin/
+
+git clone https://github.com/ameenmaali/urldedupe.git
+cd urldedupe
+cmake CMakeLists.txt
+make
+cp urldedupe /usr/local/bin/
+
+
+git clone https://github.com/tomnomnom/gf.git ~/gf
+cd ~/gf
+go build
+go mod init gf
+go mod tidy
+go build
+sudo mv gf /usr/local/bin/
+
+mkdir ~/.gf
+git clone https://github.com/Sherlock297/gf_patterns.git
+cd gf_patterns/
+
+cp *.json ~/.gf
